@@ -1,0 +1,6 @@
+{
+  "name": "SC SIMULATOR",
+  "description": "Agentic Supply Chain Disruption Simulator powered by Gemini AI. Detects global failures, models cascading impacts, and recommends optimized resilience strategies.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
