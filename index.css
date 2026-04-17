@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #0e0e10;
+  --color-surface-dim: #0e0e10;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #131315;
+  --color-surface-container: #19191c;
+  --color-surface-container-high: #1f1f22;
+  --color-surface-container-highest: #262528;
+  --color-surface-bright: #2c2c2f;
+  --color-surface-variant: #262528;
+  --color-surface-tint: #72dcff;
+  --color-on-surface: #f9f5f8;
+  --color-on-surface-variant: #adaaad;
+  --color-on-background: #f9f5f8;
+  --color-background: #0e0e10;
+  --color-primary: #72dcff;
+  --color-primary-dim: #00c3ed;
+  --color-primary-fixed: #00d2ff;
+  --color-primary-fixed-dim: #00c3ed;
+  --color-primary-container: #00d2ff;
+  --color-on-primary: #004c5e;
+  --color-on-primary-container: #004253;
+  --color-on-primary-fixed: #002c38;
+  --color-on-primary-fixed-variant: #004c5e;
+  --color-inverse-primary: #00687f;
+  --color-secondary: #dd8bfb;
+  --color-secondary-dim: #ce7eec;
+  --color-secondary-fixed: #f2c1ff;
+  --color-secondary-fixed-dim: #ebadff;
+  --color-secondary-container: #6e208c;
+  --color-on-secondary: #4c0068;
+  --color-on-secondary-container: #f1bfff;
+  --color-on-secondary-fixed: #580078;
+  --color-on-secondary-fixed-variant: #792c97;
+  --color-tertiary: #84a2ff;
+  --color-tertiary-dim: #7899ff;
+  --color-tertiary-fixed: #94aeff;
+  --color-tertiary-fixed-dim: #809fff;
+  --color-tertiary-container: #7294fa;
+  --color-on-tertiary: #002266;
+  --color-on-tertiary-container: #001649;
+  --color-on-tertiary-fixed: #001444;
+  --color-on-tertiary-fixed-variant: #00318c;
+  --color-error: #ff716c;
+  --color-error-dim: #d7383b;
+  --color-error-container: #9f0519;
+  --color-on-error: #490006;
+  --color-on-error-container: #ffa8a3;
+  --color-outline: #767577;
+  --color-outline-variant: #48474a;
+  --color-inverse-surface: #fcf8fb;
+  --color-inverse-on-surface: #565457;
+
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  --font-headline: "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", -apple-system, sans-serif;
+  --font-label: "Inter", -apple-system, sans-serif;
+}
+
+body {
+  background-color: #0e0e10;
+  color: #f9f5f8;
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+.quantum-mesh {
+  background-image:
+    radial-gradient(at 0% 0%, rgba(114, 220, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(221, 139, 251, 0.05) 0px, transparent 50%);
+}
+.glow-line::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, #72dcff, transparent);
+  box-shadow: 0 0 10px #00d2ff;
+}
+.active-glow { box-shadow: 0 0 20px rgba(0, 210, 255, 0.2); }
+#interactive-canvas {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0; pointer-events: none;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #dd8bfb;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+.skeleton {
+  background: linear-gradient(90deg, #1f1f22 25%, #262528 50%, #1f1f22 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 3D Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.glass-panel {
+  background: rgba(25, 25, 28, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.disrupted-node {
+  animation: glitch 0.3s infinite;
+}
